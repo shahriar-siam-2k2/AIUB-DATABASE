@@ -1,12 +1,23 @@
 1. SELECT * FROM emp;
+
 2. SELECT * FROM dept;
+
 3. SELECT * FROM salgrade;
+
 4. SELECT ename FROM emp;
+
 5. SELECT losal FROM salgrade;
+
 6. SELECT ename, sal FROM emp;
+
 7. SELECT ename, deptno FROM emp;
+
 8. SELECT sal, comm, (sal+1200)-(sal*34) FROM emp;
+
 9. SELECT ename as "Employee Name" FROM emp;
+
 10. SELECT DISTINCT deptno FROM emp;
+
 11. SELECT CONCAT(dname, loc) FROM dept;
+
 12. SELECT ename, sal, ename || ' is Paid and Salary is ' || sal FROM emp;
