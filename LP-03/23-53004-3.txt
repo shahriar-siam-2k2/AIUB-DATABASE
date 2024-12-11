@@ -1,0 +1,101 @@
+1.  SELECT SYSDATE AS "Date"
+    FROM dual;
+
+2.  SELECT LOWER(ename)
+    FROM emp;
+
+3.  SELECT CONCAT(ename, deptno)
+    FROM emp;
+
+4.  SELECT ROUND(sal/300, 3)
+    FROM emp
+    WHERE ename IN('KING', 'FORD');
+
+5.  SELECT MOD(sal, comm)
+    FROM emp
+    WHERE job = 'SALESMAN';
+
+6.  SELECT empno, hiredate,
+        ROUND(MONTHS_BETWEEN(SYSDATE, hiredate), 0)
+        AS "Working Months"
+    FROM emp
+    WHERE ename = 'BLAKE';
+
+7.  SELECT '01-DEC-18' AS show_date,
+        ADD_MONTHS('01-DEC-18', 3) AS added_months
+    FROM dual;
+
+8.  SELECT empno, hiredate, ROUND(hiredate, 'MONTH')
+    FROM emp;
+
+9.  SELECT empno, hiredate, TRUNC(hiredate, 'MONTH')
+    FROM emp;
+
+10. SELECT ename, TO_CHAR(sal, '$009,999')
+    FROM emp
+    WHERE ename = 'BLAKE';
+
+11. SELECT TO_CHAR(hiredate, 'DD Month YEAR') AS hiredate_formatted
+    FROM emp;
+
+12. SELECT TO_CHAR(SYSDATE, 'DD-MON-YY HH12:MI:SS AM') AS Today
+    FROM dual;
+
+13. SELECT NVL(TO_CHAR(comm), 'No Commission Yet') AS commission
+    FROM emp;
+
+14. SELECT NULLIF(ename, job)
+    FROM emp;
+
+15. SELECT NVL2(comm, 'not null', 'NULL')
+    FROM emp;
+
+16. SELECT TO_CHAR(DECODE(job, 'SALESMAN', sal+2000,
+                            'MANAGER', sal+3000,
+                            'PRESIDENT', sal+4000,
+                        sal),
+                '$9999') AS "Incremented Salary"
+    FROM emp;
+
+17. SELECT ROUND(AVG(sal), 3) AS "AVG", 
+        MIN(sal) AS "MIN",
+        MAX(sal) AS "MAX"
+    FROM emp;
+
+18. SELECT ROUND(AVG(sal), 3) AS "AVG", 
+        MIN(sal) AS "MIN",
+        MAX(sal) AS "MAX"
+    FROM emp
+    GROUP BY deptno;
+
+19. SELECT ROUND(AVG(sal), 3) AS "AVG", 
+        MIN(sal) AS "MIN",
+        MAX(sal) AS "MAX"
+    FROM emp
+    GROUP BY job;
+
+20. SELECT deptno, MIN(sal) AS "MIN"
+    FROM emp
+    GROUP BY deptno
+    HAVING MIN(sal) > 800;
+
+21. SELECT COUNT(job)
+    FROM emp
+    WHERE job = 'SALESMAN';
+
+22. SELECT SUM(sal)
+    FROM emp
+    GROUP BY job;
+
+23. SELECT SUM(sal)
+    FROM emp
+    GROUP BY deptno;
+
+24. SELECT SUM(sal)
+    FROM emp
+    GROUP BY deptno, job
+    HAVING SUM(sal) > 5000;
+    
+25. SELECT COUNT(empno)
+    FROM emp
+    WHERE deptno = 20;

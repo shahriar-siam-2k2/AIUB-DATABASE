@@ -35,7 +35,7 @@
 
 9.  SELECT ename
     FROM emp
-    WHERE ename LIKE '%L%L%';
+    WHERE ename LIKE '%LL%';
 
 10. SELECT losal, hisal
     FROM salgrade
