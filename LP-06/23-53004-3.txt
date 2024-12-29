@@ -1,0 +1,61 @@
+Data Constraints:
+
+1. CREATE TABLE department (
+    deptid number(3) PRIMARY KEY,
+    dept_name varchar(6) CHECK(dept_name IN('CSE', 'EEE', 'BBA', 'Eng', 'Arch')),
+    budget number(6) DEFAULT 0
+);
+
+
+2. CREATE TABLE course (
+    crs_id number(4) PRIMARY KEY,
+    crs_name varchar2(20) NOT NULL,
+    deptid number(3),
+    FOREIGN KEY(deptid) REFERENCES department(deptid)
+);
+
+Edit Constraints:
+
+
+1. CREATE TABLE student (
+    s_id number,
+    s_name varchar2(20),
+    phone number,
+    address varchar2(50),
+    email varchar2(30),
+    credit_completed number(3),
+    course_completed number(2),
+    cgpa number(3,2),
+    deptno number(5),
+    gender varchar2(6)
+);
+
+
+2. ALTER TABLE student
+   ADD CONSTRAINT pk_s_id PRIMARY KEY (s_id);
+
+3. ALTER TABLE student
+   MODIFY s_name VARCHAR2(20) NOT NULL;
+
+4. ALTER TABLE student
+   ADD CONSTRAINT unique_email UNIQUE (email);
+
+5. ALTER TABLE student
+   ADD CONSTRAINT fk_deptno FOREIGN KEY (deptno) REFERENCES 
+   department(deptid);
+
+6. ALTER TABLE student
+   ADD CONSTRAINT chk_gender CHECK (gender IN ('M', 'F'));
+
+7. ALTER TABLE student
+   DISABLE CONSTRAINT pk_s_id;
+
+8. ALTER TABLE student
+   DROP CONSTRAINT chk_gender;
+
+9. SELECT constraint_name, column_name
+   FROM user_cons_columns
+   WHERE table_name = 'STUDENT';
+
+10. ALTER TABLE student
+    ENABLE CONSTRAINT pk_s_id;
