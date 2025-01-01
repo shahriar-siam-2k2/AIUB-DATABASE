@@ -1,3 +1,0 @@
-@echo off
-exp D:\Codings\Programming\AIUB-DATABASE\Tables\backup.dmp full=y
-pause
