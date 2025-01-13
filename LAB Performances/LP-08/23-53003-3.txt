@@ -1,0 +1,41 @@
+1. CREATE TABLE address (a_id NUMBER(10) PRIMARY KEY, d_city VARCHAR2(50) NOT NULL, d_country VARCHAR2(50) NOT NULL);  
+
+2. CREATE TABLE doctor (d_id NUMBER(10) PRIMARY KEY, d_name VARCHAR2(50) NOT NULL, d_speciality1 VARCHAR2(50) NOT NULL, d_speciality2 VARCHAR2(50) NOT NULL, a_id NUMBER(10), FOREIGN KEY(a_id) REFERENCES address(a_id));  
+
+3. CREATE TABLE medicine (m_id NUMBER(10) PRIMARY KEY, m_name VARCHAR2(50) NOT NULL, m_company VARCHAR2(50) NOT NULL, d_id NUMBER(10), FOREIGN KEY(d_id) REFERENCES doctor(d_id));  
+
+4. CREATE TABLE pharmacy (p_id NUMBER(10) PRIMARY KEY, p_name VARCHAR2(50) NOT NULL, p_location1 VARCHAR2(50), p_location2 VARCHAR2(50));  
+
+5. CREATE TABLE pharmacy_medicine (p_id NUMBER(10), m_id NUMBER(10), PRIMARY KEY(p_id, m_id), FOREIGN KEY(p_id) REFERENCES pharmacy(p_id), FOREIGN KEY(m_id) REFERENCES medicine(m_id));  
+
+6. INSERT INTO address (a_id, d_city, d_country) VALUES (1, 'Bogura', 'Bangladesh');  
+
+   INSERT INTO address (a_id, d_city, d_country) VALUES (2, 'Katmundu', 'Nepal');  
+
+   INSERT INTO address (a_id, d_city, d_country) VALUES (3, 'Seoul', 'South Korea');  
+
+7. INSERT INTO doctor (d_id, d_name, d_speciality1, d_speciality2, a_id) VALUES (01, 'Dr. Erona', 'Orthopaedics', 'Cardiology', 1);  
+
+   INSERT INTO doctor (d_id, d_name, d_speciality1, d_speciality2, a_id) VALUES (02, 'Dr. Smith', 'Urology', 'NULL', 2);  
+
+   INSERT INTO doctor (d_id, d_name, d_speciality1, d_speciality2, a_id) VALUES (03, 'Dr. Kanij', 'Nephrologist', 'NULL', 3);  
+
+8. INSERT INTO medicine (m_id, m_name, m_company, d_id) VALUES (001, 'CoralCal-DX', 'Radiant Pharmaceuticals Ltd.', 01);  
+
+   INSERT INTO medicine (m_id, m_name, m_company, d_id) VALUES (002, 'Napa', 'Beximco Pharmaceuticals Ltd.', 02);  
+
+   INSERT INTO medicine (m_id, m_name, m_company, d_id) VALUES (003, 'Nosemin ', 'Ibn Sina Pharmaceuticals Ltd.', 03);  
+
+9. INSERT INTO pharmacy (p_id, p_name, p_location1, p_location2) VALUES (0001, 'FamilyCare', 'Shewrapara', NULL);  
+
+   INSERT INTO pharmacy (p_id, p_name, p_location1, p_location2) VALUES (0002, 'EroCare', 'Mirpur-2', NULL);  
+
+   INSERT INTO pharmacy (p_id, p_name, p_location1, p_location2) VALUES (0003, 'Rajin Pharma', 'Kuratoli', 'Kuril');  
+
+10. INSERT INTO pharmacy_medicine (p_id, m_id) VALUES (0001, 001);  
+
+    INSERT INTO pharmacy_medicine (p_id, m_id) VALUES (0001, 002);  
+
+    INSERT INTO pharmacy_medicine (p_id, m_id) VALUES (0002, 002);  
+
+    INSERT INTO pharmacy_medicine (p_id, m_id) VALUES (0003, 003);

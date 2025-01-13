@@ -1,0 +1,19 @@
+1. CREATE TABLE teacher101 (tID NUMBER(10), tName VARCHAR2(10), tDepartment VARCHAR2(10));  
+
+2. INSERT INTO teacher101 (tID, tName, tDepartment) VALUES (1, 'Erona', 'CSE');  
+
+   INSERT INTO teacher101 (tID, tName, tDepartment) VALUES (2, 'Rodela', 'EEE');  
+
+   INSERT INTO teacher101 (tID, tName, tDepartment) VALUES (3, 'Rajin', 'ENG');  
+
+   INSERT INTO teacher101 (tID, tName, tDepartment) VALUES (4, 'Siam', 'BBA');  
+
+   INSERT INTO teacher101 (tID, tName, tDepartment) VALUES (5, 'Raj', 'IPE');  
+
+3. CREATE VIEW Teacher101View AS SELECT tName, tDepartment FROM Teacher101;  
+
+4. SELECT * FROM Teacher101View;  
+
+5. SELECT tName FROM Teacher101View WHERE tDepartment = 'CS';  
+
+6. DROP VIEW Teacher101View;

@@ -1,0 +1,124 @@
+CREATE TABLE address (
+    a_id NUMBER(10) PRIMARY KEY,
+    d_city VARCHAR2(50) NOT NULL,
+    d_country VARCHAR2(50) NOT NULL
+);
+
+CREATE TABLE doctor (
+    d_id NUMBER(10) PRIMARY KEY,
+    d_name VARCHAR2(50) NOT NULL,
+    d_speciality1 VARCHAR2(50) NOT NULL,
+    d_speciality2 VARCHAR2(50) NOT NULL,
+    a_id NUMBER(10),
+    FOREIGN KEY(a_id) REFERENCES address(a_id)
+);
+
+CREATE TABLE medicine (
+    m_id NUMBER(10) PRIMARY KEY,
+    m_name VARCHAR2(50) NOT NULL,
+    m_company VARCHAR2(50) NOT NULL,
+    d_id NUMBER(10),
+    FOREIGN KEY(d_id) REFERENCES doctor(d_id)
+);
+
+CREATE TABLE pharmacy (
+    p_id NUMBER(10) PRIMARY KEY,
+    p_name VARCHAR2(50) NOT NULL,
+    p_location1 VARCHAR2(50),
+    p_location2 VARCHAR2(50)
+);
+
+CREATE TABLE pharmacy_medicine (
+    p_id NUMBER(10),
+    m_id NUMBER(10),
+    PRIMARY KEY(p_id, m_id),
+    FOREIGN KEY(p_id) REFERENCES pharmacy(p_id),
+    FOREIGN KEY(m_id) REFERENCES medicine(m_id)
+);
+
+INSERT INTO address
+(a_id, d_city, d_country)
+VALUES
+(1, 'Dhaka', 'Bangladesh');
+
+INSERT INTO address
+(a_id, d_city, d_country)
+VALUES
+(2, 'Mumbai', 'India');
+
+INSERT INTO address
+(a_id, d_city, d_country)
+VALUES
+(3, 'California', 'USA');
+
+
+INSERT INTO doctor
+(d_id, d_name, d_speciality1, d_speciality2, a_id)
+VALUES
+(101, 'Dr. Simba', 'Cardiology', NULL, 1);
+
+INSERT INTO doctor
+(d_id, d_name, d_speciality1, d_speciality2, a_id)
+VALUES
+(102, 'Dr. Erona', 'Orthopaedics', 'Sports Medicine', 2);
+
+INSERT INTO doctor
+(d_id, d_name, d_speciality1, d_speciality2, a_id)
+VALUES
+(103, 'Dr. Jui', 'Neurology', 'Psychiatry', 3);
+
+
+
+INSERT INTO medicine
+(m_id, m_name, m_company, d_id)
+VALUES
+(201, 'Napa', 'Beximco Pharmaceuticals Ltd.', 101);
+
+INSERT INTO medicine
+(m_id, m_name, m_company, d_id)
+VALUES
+(202, 'Fexo', 'Square Pharmaceuticals PLC', 102);
+
+INSERT INTO medicine
+(m_id, m_name, m_company, d_id)
+VALUES
+(203, 'Neospin', 'Edruc Limited', 103);
+
+
+
+INSERT INTO pharmacy
+(p_id, p_name, p_location1, p_location2)
+VALUES
+(301, 'Laz Pharma', 'Rupnagar', 'Mirpur');
+
+INSERT INTO pharmacy
+(p_id, p_name, p_location1, p_location2)
+VALUES
+(302, 'MediCare', 'Mirpur-10', NULL);
+
+INSERT INTO pharmacy
+(p_id, p_name, p_location1, p_location2)
+VALUES
+(303, 'Rumi Pharmacy', 'Muladuli', 'Pabna');
+
+
+
+INSERT INTO pharmacy_medicine
+(p_id, m_id)
+VALUES
+(301, 201);
+
+INSERT INTO pharmacy_medicine
+(p_id, m_id)
+VALUES
+(301, 202);
+
+INSERT INTO pharmacy_medicine
+(p_id, m_id)
+VALUES
+(302, 202);
+
+INSERT INTO pharmacy_medicine
+(p_id, m_id)
+VALUES
+(303, 203);
