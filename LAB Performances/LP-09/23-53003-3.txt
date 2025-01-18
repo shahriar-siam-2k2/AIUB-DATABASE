@@ -1,0 +1,9 @@
+CREATE TABLE subjetcts (subid NUMBER(10) PRIMARY KEY, sname VARCHAR2(50));  
+
+CREATE TABLE publishers (pubid NUMBER(10) PRIMARY KEY, pname VARCHAR2(50), email VARCHAR2(50), phone NUMBER(10));  
+
+CREATE TABLE authors (authid NUMBER(10) PRIMARY KEY, aname VARCHAR2(50), email VARCHAR2(50), phone VARCHAR2(50));  
+
+CREATE TABLE titles (titleid NUMBER(10) PRIMARY KEY, title VARCHAR2(50), pubid NUMBER(10), subid NUMBER(10), pubdate DATE, cover VARCHAR2(50), price NUMBER(10), FOREIGN KEY(pubid) REFERENCES publishers(pubid), FOREIGN KEY(subid) REFERENCES subjetcts(subid));  
+
+CREATE TABLE titleauthors (titleid NUMBER(10), authid NUMBER(10), PRIMARY KEY (titleid, authid), FOREIGN KEY(titleid) REFERENCES titles(titleid), FOREIGN KEY(authid) REFERENCES authors(authid));
